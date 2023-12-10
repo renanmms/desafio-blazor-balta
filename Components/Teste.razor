@@ -1,0 +1,57 @@
+@using AppContext = desafio.Data.AppContext
+@using desafio.Models
+@using Microsoft.EntityFrameworkCore
+@inject AppContext context
+
+
+<div class="d-flex gap-2">
+    <input @bind-value="searchText" placeholder="Search"  @oninput="HandleSearchTextChanged"/> 
+    <button type="button" class="btn btn-primary" @onclick="HandleSearchTextChanged">Pequisar</button>
+</div>
+
+
+@foreach (var city in filterCities)
+{
+    <p>@city.City</p>
+}
+
+
+
+@code {
+    [Parameter] public string Name { get; set; } = string.Empty;
+
+    public string searchText = String.Empty;
+
+
+    public List<IBGE> allCities { get; set; }
+
+    public List<IBGE> filterCities
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(searchText.Trim()))
+            {
+                return allCities;
+            }
+
+            return allCities.Where(c => c.City.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        allCities = await getAll();
+    }
+    
+
+    private async Task<List<IBGE>> getAll()
+    {
+        return await context.IBGE.ToListAsync();
+    }
+    
+    private void HandleSearchTextChanged()
+    {
+        StateHasChanged();
+    }
+    
+}

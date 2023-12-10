@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/renan/Documents/github/desafio-blazor-balta/desafio-blazor-balta.csproj": {}
+    "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\desafio-blazor-balta.csproj": {}
   },
   "projects": {
-    "/home/renan/Documents/github/desafio-blazor-balta/desafio-blazor-balta.csproj": {
+    "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\desafio-blazor-balta.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/renan/Documents/github/desafio-blazor-balta/desafio-blazor-balta.csproj",
+        "projectUniqueName": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\desafio-blazor-balta.csproj",
         "projectName": "desafio-blazor-balta",
-        "projectPath": "/home/renan/Documents/github/desafio-blazor-balta/desafio-blazor-balta.csproj",
-        "packagesPath": "/home/renan/.nuget/packages/",
-        "outputPath": "/home/renan/Documents/github/desafio-blazor-balta/obj/",
+        "projectPath": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\desafio-blazor-balta.csproj",
+        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/renan/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,6 +37,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -56,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/renan/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\kevin\\.dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

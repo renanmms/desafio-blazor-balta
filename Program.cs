@@ -1,10 +1,16 @@
 using desafio_blazor_balta.Components;
+using Microsoft.EntityFrameworkCore;
+using AppContext = desafio.Data.AppContext;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<AppContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 var app = builder.Build();
 
