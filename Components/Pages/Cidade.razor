@@ -1,3 +1,5 @@
+@inherits desafio.Components.Pages.Cidade;
+
 <div class="card mb-4">
   <div class="card-header">
     <b>@UF</b>
@@ -8,14 +10,3 @@
     <a href="https://www.ibge.gov.br/cidades-e-estados/sp/sao-bernardo-do-campo" class="btn btn-primary">Veja mais</a>
   </div>
 </div>
-
-@code {
-  [Parameter]
-  public string? Municipio { get; set; }
-
-  [Parameter]
-  public string? UF { get; set; }
-
-  [Parameter]
-  public string? CodigoIBGE { get; set; }
-}
