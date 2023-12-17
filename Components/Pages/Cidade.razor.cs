@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace desafio.Components.Pages;
 
-public class Cidade : ComponentBase
+public class CidadeComponent : ComponentBase
 {
     [Parameter]
     public string? Municipio { get; set; }
