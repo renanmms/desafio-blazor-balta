@@ -1,28 +1,31 @@
 @page "/pesquisa"
+@inherits desafio.Components.Pages.PesquisaComponent;
 
 <PageTitle>Pesquisar por endereço </PageTitle>
 
 <div class="d-flex flex-column">
     <h1>Pesquisar por endereço: </h1>
-
-    <label for="Cidade">Cidade</label>
-    <select class="w-25" name="Cidade" id="pesquisa-cidade"></select>
-
-    <label for="Estado">Estado</label>
-    <select class="w-25" name="" id="pesquisa-estado">
-        <option value="SP">São Paulo</option>
-        <option value="RJ">Rio de Janeiro</option>
-        <option value="RO">Roraima</option>
-    </select>
-
-    <label for="CodigoIBGE">Código IBGE</label>
-    <input class="w-25" id="pesquisa-codigo" type="text" />
-
-    <button class="btn btn-primary w-25 mb-5 mt-3">Pesquisar</button>
+    
+    <BlazoredTypeahead 
+                SearchMethod="ProcuraCidades"
+                @bind-Value="CidadeSelecionada">
+        <SelectedTemplate>
+            @context.UF
+        </SelectedTemplate>
+        <ResultTemplate>
+            @context.UF, @context.Municipio, @context.CodigoIBGE
+        </ResultTemplate>
+    </BlazoredTypeahead>
 </div>
 
 <h2>Resultados:</h2>
 
-<Cidade Municipio="São Bernardo do Campo" CodigoIBGE="3548708" UF="SP"/>
-<Cidade Municipio="São Caetano do Sul" CodigoIBGE="3548807" UF="SP"/>
-<Cidade Municipio="Santo André" CodigoIBGE="3547809" UF="SP"/>
+@foreach(var cidade in cidades)
+{
+    <p>@cidade.Municipio</p>
+}
+
+@if( CidadeSelecionada != null)
+{
+    <p>@CidadeSelecionada.Municipio</p>
+}
