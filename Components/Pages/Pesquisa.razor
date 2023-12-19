@@ -19,14 +19,9 @@
     </BlazoredTypeahead>
 </div>
 
-<h2>Resultados:</h2>
-
-@foreach(var cidade in cidades)
-{
-    <p>@cidade.Municipio</p>
-}
-
 @if( CidadeSelecionada != null)
 {
-    <p>@CidadeSelecionada.Municipio</p>
+    <Cidade Municipio=@CidadeSelecionada.Municipio 
+            UF=@CidadeSelecionada.UF 
+            CodigoIBGE=@CidadeSelecionada.CodigoIBGE />
 }
