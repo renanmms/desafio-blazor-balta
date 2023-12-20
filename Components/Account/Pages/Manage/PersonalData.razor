@@ -1,0 +1,30 @@
+﻿@page "/Account/Manage/PersonalData"
+
+@inject IdentityUserAccessor UserAccessor
+
+<PageTitle>Deletar conta</PageTitle>
+
+<StatusMessage />
+<h3>Deletar sua conta</h3>
+
+<div class="row" style="margin-top: 15px">
+    <div class="col-md-6">
+        <p>Ao excluir sua conta, todos os seus dados serão apagados juntos.</p>
+        <p>
+            <strong>Tem certeza que deseja excluir sua conta?</strong>
+        </p>
+        <p>
+            <a href="Account/Manage/DeletePersonalData" class="btn btn-danger">Deletar</a>
+        </p>
+    </div>
+</div>
+
+@code {
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _ = await UserAccessor.GetRequiredUserAsync(HttpContext);
+    }
+}
