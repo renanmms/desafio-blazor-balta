@@ -1,0 +1,152 @@
+@using AppContext = desafio.Data.AppContext
+@using desafio.Models
+@using Microsoft.EntityFrameworkCore
+@using BlazorBootstrap
+@using desafio.Controller
+@using desafio.Models.DTO
+@inject AppContext context
+@inject LocalidadeController LocalidadeController
+@rendermode InteractiveAuto
+
+<div class="row d-flex gap-3 mb-5">
+    <input  class="col-8"@bind-value="searchText" placeholder="Search"  @oninput="HandleSearchTextChanged"/>
+    <button class="col-3 btn btn-success" id="btn-new-location"  @onclick="OnShowModalClick" >Nova localização</button>
+</div>
+<Toasts class="p-3" Messages="messages" Placement="ToastsPlacement.TopRight" />
+
+<div class="d-flex flex-column">
+    <div class="row bg-dark">
+        <div class="col text-white text-center border-end border-light">Nome</div>
+        <div class="col-4 text-white text-center">Ações</div>
+    </div>
+    
+    @foreach (var city in filterCities)
+    {
+
+        <div class="row py-3">
+            <div class="col">
+                <p>@city.City</p>
+            </div>
+            <div class="col-4 d-flex justify-content-center gap-2">
+                <button class="btn btn-danger" @onclick="() => Delete(city.Id)">Excluir</button>
+                <button class="btn btn-dark">Editar</button>
+            </div>
+        </div>
+
+    }
+    
+    <Modal @ref="modal" Title="Cadastrar Localidade">
+        <BodyTemplate>
+            <div class="d-flex flex-column align-items-center w-100 h-auto bg-light">
+                
+                <input class="col-8 my-5 w-75" style="height: 48px; border-radius: 10px" @bind-value="modalLocalidade" placeholder="Digite a localidade" @oninput="HandleSearchTextChanged"/>
+                <p>@modalLocalidade</p>
+            </div>
+       
+        </BodyTemplate>
+        <FooterTemplate>
+            <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Close</Button>
+            <Button Color="ButtonColor.Primary" @onclick="OnSaveLocation">Save changes</Button>
+        </FooterTemplate>
+    </Modal>
+
+</div>
+
+
+
+@code {
+    [Parameter] public string Name { get; set; } = string.Empty;
+
+    private Modal modal = default!;
+    
+    List<ToastMessage> messages = new List<ToastMessage>();
+
+    public string searchText = String.Empty;
+
+    public string modalLocalidade = String.Empty;
+
+
+    public List<IBGE> allCities { get; set; } = new List<IBGE>();
+
+    private List<IBGE> _filterCities;
+
+    public List<IBGE> filterCities
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(searchText.Trim()))
+            {
+                return allCities;
+            }
+
+            return allCities.Where(c => c.City.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        set { _filterCities = value; }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        allCities = await getAll();
+    }
+
+    private ToastMessage CreateToastMessage(ToastType toastType, String text) => new ToastMessage
+    {
+        Type = toastType,
+        Message = $"{text}"
+    };
+
+    private async Task<List<IBGE>> getAll()
+    {
+        return await LocalidadeController.GetAll();
+    }
+
+    private async Task OnSaveLocation()
+    {
+        try
+        {
+            var resp = await LocalidadeController.Create(new CreateIBGE("RS", modalLocalidade.ToString()));
+            if (resp)
+            {
+                Console.WriteLine("Deu bom");
+                messages.Add(CreateToastMessage(ToastType.Success, $"Localidade {modalLocalidade.ToString()} foi criado com sucesso"));
+                await modal.HideAsync();
+            }
+        }
+        catch (Exception e)
+        {
+            messages.Add(CreateToastMessage(ToastType.Success, $"Nao foi possivel criar a localidade"));
+            await modal.HideAsync();
+        }
+
+
+}
+
+    private async Task OnShowModalClick()
+    {
+        await modal.ShowAsync();
+    }
+
+    private async Task OnHideModalClick()
+    {
+        await modal.HideAsync();
+    }
+
+    private async void Delete(string id)
+    {
+       var resp = await LocalidadeController.Delete(id);
+       if (resp)
+       {
+           allCities = await getAll();
+           StateHasChanged();
+       }
+           
+       
+    }
+    
+    private async void HandleSearchTextChanged()
+    {
+        StateHasChanged();
+        
+    }
+    
+}
