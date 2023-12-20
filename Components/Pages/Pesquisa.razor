@@ -1,0 +1,27 @@
+@page "/pesquisa"
+@rendermode InteractiveServer
+@inherits desafio.Components.Pages.PesquisaComponent;
+
+<PageTitle>Pesquisar por endereço </PageTitle>
+
+<div class="d-flex flex-column">
+    <h1>Pesquisar por endereço: </h1>
+    
+    <BlazoredTypeahead 
+                SearchMethod="ProcuraCidades"
+                @bind-Value="CidadeSelecionada">
+        <SelectedTemplate>
+            @context.UF
+        </SelectedTemplate>
+        <ResultTemplate>
+            @context.UF, @context.Municipio, @context.CodigoIBGE
+        </ResultTemplate>
+    </BlazoredTypeahead>
+</div>
+
+@if( CidadeSelecionada != null)
+{
+    <Cidade Municipio=@CidadeSelecionada.Municipio 
+            UF=@CidadeSelecionada.UF 
+            CodigoIBGE=@CidadeSelecionada.CodigoIBGE />
+}
