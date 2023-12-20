@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("desafio-blazor-balta")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f746ec91779865c5530129d25ae4a06f1e9df52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("desafio-blazor-balta")]
 [assembly: System.Reflection.AssemblyTitleAttribute("desafio-blazor-balta")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

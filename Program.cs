@@ -1,4 +1,5 @@
 using desafio_blazor_balta.Components;
+using desafio.Controller;
 using Microsoft.EntityFrameworkCore;
 using AppContext = desafio.Data.AppContext;
 
@@ -9,9 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddScoped<LocalidadeController>();
+
 builder.Services.AddDbContext<AppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
+builder.Services.AddBlazorBootstrap();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
