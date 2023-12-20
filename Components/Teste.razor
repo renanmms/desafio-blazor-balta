@@ -3,6 +3,7 @@
 @using Microsoft.EntityFrameworkCore
 @using BlazorBootstrap
 @using desafio.Controller
+@using desafio.Models.DTO
 @inject AppContext context
 @inject LocalidadeController LocalidadeController
 @rendermode InteractiveAuto
@@ -11,6 +12,7 @@
     <input  class="col-8"@bind-value="searchText" placeholder="Search"  @oninput="HandleSearchTextChanged"/>
     <button class="col-3 btn btn-success" id="btn-new-location"  @onclick="OnShowModalClick" >Nova localização</button>
 </div>
+<Toasts class="p-3" Messages="messages" Placement="ToastsPlacement.TopRight" />
 
 <div class="d-flex flex-column">
     <div class="row bg-dark">
@@ -33,9 +35,14 @@
 
     }
     
-    <Modal @ref="modal" Title="Modal title">
+    <Modal @ref="modal" Title="Cadastrar Localidade">
         <BodyTemplate>
-            Modal body text goes here.
+            <div class="d-flex flex-column align-items-center w-100 h-auto bg-light">
+                
+                <input class="col-8 my-5 w-75" style="height: 48px; border-radius: 10px" @bind-value="modalLocalidade" placeholder="Digite a localidade" @oninput="HandleSearchTextChanged"/>
+                <p>@modalLocalidade</p>
+            </div>
+       
         </BodyTemplate>
         <FooterTemplate>
             <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Close</Button>
@@ -52,9 +59,11 @@
 
     private Modal modal = default!;
     
-
+    List<ToastMessage> messages = new List<ToastMessage>();
 
     public string searchText = String.Empty;
+
+    public string modalLocalidade = String.Empty;
 
 
     public List<IBGE> allCities { get; set; } = new List<IBGE>();
@@ -79,17 +88,38 @@
     {
         allCities = await getAll();
     }
-    
+
+    private ToastMessage CreateToastMessage(ToastType toastType, String text) => new ToastMessage
+    {
+        Type = toastType,
+        Message = $"{text}"
+    };
 
     private async Task<List<IBGE>> getAll()
     {
         return await LocalidadeController.GetAll();
     }
-    
+
     private async Task OnSaveLocation()
     {
-        Console.WriteLine("ekvinho");
-    }
+        try
+        {
+            var resp = await LocalidadeController.Create(new CreateIBGE("RS", modalLocalidade.ToString()));
+            if (resp)
+            {
+                Console.WriteLine("Deu bom");
+                messages.Add(CreateToastMessage(ToastType.Success, $"Localidade {modalLocalidade.ToString()} foi criado com sucesso"));
+                await modal.HideAsync();
+            }
+        }
+        catch (Exception e)
+        {
+            messages.Add(CreateToastMessage(ToastType.Success, $"Nao foi possivel criar a localidade"));
+            await modal.HideAsync();
+        }
+
+
+}
 
     private async Task OnShowModalClick()
     {

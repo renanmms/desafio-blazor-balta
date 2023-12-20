@@ -37,7 +37,7 @@ public class LocalidadeController : ControllerBase
     {
         try
         {
-            _context.IBGE.Add(new IBGE() { City = ibge.City, State = ibge.State });
+            _context.IBGE.Add(new IBGE() { City = ibge.City, State = ibge.State});
             await _context.SaveChangesAsync();
             return true;
         }
