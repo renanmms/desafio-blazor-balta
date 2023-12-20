@@ -64,6 +64,25 @@
           "buildMultiTargeting/Blazor.Bootstrap.props": {}
         }
       },
+      "Blazored.Typeahead/4.7.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "6.0.3",
+          "Microsoft.AspNetCore.Components.Web": "6.0.3"
+        },
+        "compile": {
+          "lib/net6.0/Blazored.Typeahead.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Blazored.Typeahead.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.Typeahead.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.Typeahead.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Authorization/6.0.11": {
         "type": "package",
         "dependencies": {
@@ -1395,6 +1414,25 @@
         "staticwebassets/blazor.bootstrap.css",
         "staticwebassets/blazor.bootstrap.js",
         "staticwebassets/icon/128X128.png"
+      ]
+    },
+    "Blazored.Typeahead/4.7.0": {
+      "sha512": "fTN4Bt9rwEE/d33FXFd+h/DBjVtsFJLRf9B8mu0zJWMWG5Mk2tU2il3aK0+laUxNgBNBgEL0jW/831I+oapd6A==",
+      "type": "package",
+      "path": "blazored.typeahead/4.7.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.typeahead.4.7.0.nupkg.sha512",
+        "blazored.typeahead.nuspec",
+        "build/Blazored.Typeahead.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazored.Typeahead.props",
+        "buildTransitive/Blazored.Typeahead.props",
+        "icon.png",
+        "lib/net6.0/Blazored.Typeahead.dll",
+        "staticwebassets/blazored-typeahead.css",
+        "staticwebassets/blazored-typeahead.js"
       ]
     },
     "Microsoft.AspNetCore.Authorization/6.0.11": {
@@ -3588,24 +3626,25 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Blazor.Bootstrap >= 1.10.4",
+      "Blazored.Typeahead >= 4.7.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 8.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kevin\\.nuget\\packages\\": {}
+    "/home/renan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\desafio-blazor-balta.csproj",
+      "projectUniqueName": "/home/renan/Documents/github/desafio-blazor-balta/desafio-blazor-balta.csproj",
       "projectName": "desafio-blazor-balta",
-      "projectPath": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\desafio-blazor-balta.csproj",
-      "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\obj\\",
+      "projectPath": "/home/renan/Documents/github/desafio-blazor-balta/desafio-blazor-balta.csproj",
+      "packagesPath": "/home/renan/.nuget/packages/",
+      "outputPath": "/home/renan/Documents/github/desafio-blazor-balta/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/renan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3632,6 +3671,10 @@
           "Blazor.Bootstrap": {
             "target": "Package",
             "version": "[1.10.4, )"
+          },
+          "Blazored.Typeahead": {
+            "target": "Package",
+            "version": "[4.7.0, )"
           },
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
             "target": "Package",
@@ -3661,7 +3704,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/renan/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

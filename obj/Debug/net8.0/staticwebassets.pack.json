@@ -1,39 +1,39 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\desafio-blazor-balta.bundle.scp.css",
-      "PackagePath": "staticwebassets\\desafio-blazor-balta.bundle.scp.css"
+      "Id": "/home/renan/Documents/github/desafio-blazor-balta/obj/Debug/net8.0/scopedcss/projectbundle/desafio-blazor-balta.bundle.scp.css",
+      "PackagePath": "staticwebassets/desafio-blazor-balta.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\wwwroot\\app.css",
-      "PackagePath": "staticwebassets\\app.css"
+      "Id": "/home/renan/Documents/github/desafio-blazor-balta/wwwroot/app.css",
+      "PackagePath": "staticwebassets/app.css"
     },
     {
-      "Id": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\wwwroot\\bootstrap\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+      "Id": "/home/renan/Documents/github/desafio-blazor-balta/wwwroot/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\wwwroot\\bootstrap\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+      "Id": "/home/renan/Documents/github/desafio-blazor-balta/wwwroot/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/bootstrap/bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\kevin\\balta\\desafio-blazor-balta\\wwwroot\\favicon.png",
-      "PackagePath": "staticwebassets\\favicon.png"
+      "Id": "/home/renan/Documents/github/desafio-blazor-balta/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.desafio-blazor-balta.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.desafio-blazor-balta.props",
       "PackagePath": "build\\desafio-blazor-balta.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.desafio-blazor-balta.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.desafio-blazor-balta.props",
       "PackagePath": "buildMultiTargeting\\desafio-blazor-balta.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.desafio-blazor-balta.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.desafio-blazor-balta.props",
       "PackagePath": "buildTransitive\\desafio-blazor-balta.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.desafio-blazor-balta.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.desafio-blazor-balta.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     }
   ],
