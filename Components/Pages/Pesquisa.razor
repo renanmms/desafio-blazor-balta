@@ -1,6 +1,8 @@
 @page "/pesquisa"
+@using desafio.Controller;
+@inject LocalidadeController LocalidadeController
+@* @inherits desafio.Components.Pages.PesquisaComponent; *@
 @rendermode InteractiveServer
-@inherits desafio.Components.Pages.PesquisaComponent;
 
 <PageTitle>Pesquisar por endereço </PageTitle>
 
@@ -11,17 +13,40 @@
                 SearchMethod="ProcuraCidades"
                 @bind-Value="CidadeSelecionada">
         <SelectedTemplate>
-            @context.UF
+            @context.State
         </SelectedTemplate>
         <ResultTemplate>
-            @context.UF, @context.Municipio, @context.CodigoIBGE
+            @context.State, @context.City, @context.Id
         </ResultTemplate>
     </BlazoredTypeahead>
 </div>
 
 @if( CidadeSelecionada != null)
 {
-    <Cidade Municipio=@CidadeSelecionada.Municipio 
-            UF=@CidadeSelecionada.UF 
-            CodigoIBGE=@CidadeSelecionada.CodigoIBGE />
+    <Cidade Municipio=@CidadeSelecionada.City 
+            UF=@CidadeSelecionada.State 
+            CodigoIBGE=@CidadeSelecionada.Id />
+}
+
+
+@code {
+    protected desafio.Models.IBGE CidadeSelecionada;
+    protected List<desafio.Models.IBGE> cidades;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cidades = await getAll();
+    }
+
+    protected async Task<IEnumerable<desafio.Models.IBGE>> ProcuraCidades(string criterio)
+    {
+        return await Task.FromResult(cidades.Where(c => c.City.ToLower().Contains(criterio.ToLower()) || 
+                                                        c.State.ToLower().Contains(criterio.ToLower()) ||
+                                                        c.Id.Contains(criterio.ToLower())).ToList());
+    }
+
+     private async Task<List<desafio.Models.IBGE>> getAll()
+    {
+        return await LocalidadeController.GetAll();
+    }
 }
